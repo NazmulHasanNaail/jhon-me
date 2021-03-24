@@ -9,7 +9,7 @@
 
 ?>
 
-<div class="blog-single-item border quote">
+<div class="blog-single-item  quote" data-aos="fade-up">
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <div class="blog-single-item-img">
                 <?php jhon_me_post_thumbnail(); ?>

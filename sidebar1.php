@@ -1,14 +1,6 @@
 <!--========BLOG-RIGHT-SIDE-AREA==========-->
 <div class="col-lg-4">
     <div class="blog-right-side-area">
-        <!----sidebar-search-box---->
-        <div class="sidebar-search-box" data-aos="fade-up">
-            <form>
-                <input type="text" name="search" placeholder="Search...">
-                <button type="submit" name="submit"><i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-            </form>
-        </div>
         <!----category---->
         <div class="category" data-aos="fade-up">
             <div class="blog-right-side-heading">

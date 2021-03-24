@@ -52,65 +52,6 @@ if ( ! function_exists( 'jhon_me_posted_by' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'jhon_me_entry_footer' ) ) :
-	/**
-	 * Prints HTML with meta information for the categories, tags and comments.
-	 */
-	function jhon_me_entry_footer() {
-		// Hide category and tag text for pages.
-		if ( 'post' === get_post_type() ) {
-			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'jhon-me' ) );
-			if ( $categories_list ) {
-				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'jhon-me' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			}
-
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'jhon-me' ) );
-			if ( $tags_list ) {
-				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'jhon-me' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			}
-		}
-
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: post title */
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'jhon-me' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					wp_kses_post( get_the_title() )
-				)
-			);
-			echo '</span>';
-		}
-
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'jhon-me' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
-	}
-endif;
 
 if ( ! function_exists( 'jhon_me_post_thumbnail' ) ) :
 	/**
@@ -145,12 +86,35 @@ if ( ! function_exists( 'jhon_me_post_thumbnail' ) ) :
 			)
 		);
 	?>
-    <div class="overlay">
+    <!-- <div class="overlay">
         <div class="arrow">&rarr;</div>
-    </div>
+    </div> -->
 </a>
 <?php
 		endif; // End is_singular().
+	}
+endif;
+
+if ( ! function_exists( 'jhon_me_comment_form' ) ) :
+	/**
+	 * custom Comment form.
+	 *
+	 * @link https://developer.wordpress.org/reference/functions/comment_form/
+	 */
+	function jhon_me_comment_form(){
+		$comments_args = array(
+			'title_reply_before'=>'<h6 id="reply-title" class="comment-reply-title">',
+			'title_reply_after' =>'</h6>',
+			// Change the title of send button 
+			'label_submit' => __( 'Submit Comment', 'textdomain' ),
+			// Change the title of the reply section
+			'title_reply' => __( 'Drop Us a Comment', 'textdomain' ),
+			// Remove "Text or HTML to be displayed after the set of comment fields".
+			'submit_button' => '<input name="%1$s" type="submit" id="%2$s" class="btn %3$s" value="%4$s" />.',
+			// Redefine your own textarea (the comment body).
+			'comment_field' => '<div class="form-row"><p class="form-group col-md-12"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" class="form-control" placeholder="This is a comment" name="comment" cols="30" rows="5" aria-required="true"></textarea></p></div>',
+	);
+	comment_form( $comments_args );
 	}
 endif;
 

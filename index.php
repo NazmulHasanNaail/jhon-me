@@ -27,32 +27,56 @@
             <div class="col-lg-8">
                 <div class="blog-left-side-area">
                     <!--------blog-big-post-------->
-                    <div class="blog-single-big-content border-bottom">
-                        <a href="blog-page-details.html"><img src="img/Blog-post-img-1.png" alt="Blog-post-img-1"></a>
-                        <h3><a href="blog-page-details.html">NEW YEAR COLOURS TREND FOR ILLUSTRATION </a></h3>
-                        <div class="admin-and-post-date">
-                            <span class="border-right"><i class="fas fa-user"></i> admin</span>
-                            <span><i class="far fa-calendar-alt"></i>Jun 24, 2018</span>
-                        </div>
-                        <p>Whether it’s time for your next factory recommended maintenance visit, a routine oil
-                            change, new tires, or repair services on your brakes, muffler and exhaust</p>
+                    <?php
+                    $most_recent_args = array(
+                        'posts_per_page' => 1,
+                        'paged'          => 1,
+                        'fields'         => 'ids',
+                        'orderby'        => 'post_modified',
+                        'order'          => 'DESC',
+                    );
+                    $most_recent = new WP_Query( $most_recent_args );
+                    if ( $most_recent->have_posts() ) :
+                        while ( $most_recent->have_posts() ) :
+                            $most_recent->the_post();
+                    ?>
+                    <div class="blog-single-big-content">
+                             <?php 
+                             get_template_part( 'template-parts/post-formats/post',get_post_format() );
+                            ?>
                     </div>
+                    <?php
+                    endwhile;
+                    endif;
+                    wp_reset_postdata();
+                    ?>
                     <!--------blog-post-------->
                     <div class="row">
                         <?php
-                        if ( have_posts() ) :
+                        $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : '1';
+                        $args = array(
+                            'posts_per_page' =>get_option('posts_per_page'),
+                            'post__not_in'   => $most_recent->posts,
+                            'post_type'      =>"post",
+                            'paged'          => $paged
+                        );
+                        $all_post = new WP_Query( $args);
+                        if ( $all_post->have_posts() ) :
 
                             /* Start the Loop */
-                            while ( have_posts() ) :
-                                the_post();
-
+                            while ( $all_post->have_posts() ) :
+                                $all_post->the_post();
                                 /*
                                 * Include the Post-Type-specific template for the content.
                                 * If you want to override this in a child theme, then include a file
                                 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
                                 */
+                                ?>
+                                <div class="col-md-6">
+                                <?php
                                 get_template_part( 'template-parts/content', get_post_type() );
                                 ?>
+                                </div><!---col-md-6-->
                         <?php
                             endwhile;
                             ?>

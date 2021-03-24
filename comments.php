@@ -21,30 +21,29 @@ if ( post_password_required() ) {
 ?>
 
 <div id="comments" class="comments-area">
-
+	<div class="blog-comment-list-area">
 	<?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
-		<h2 class="comments-title">
+		<h6 class="comments-title">
 			<?php
 			$jhon_me_comment_count = get_comments_number();
 			if ( '1' === $jhon_me_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'jhon-me' ),
-					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
+					esc_html__( 'One comment', 'jhon-me' ),
+					
 				);
 			} else {
 				printf( 
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $jhon_me_comment_count, 'comments title', 'jhon-me' ) ),
+					esc_html( _nx( '%1$s comments', '%1$s comments', $jhon_me_comment_count, 'comments title', 'jhon-me' ) ),
 					number_format_i18n( $jhon_me_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			}
 			?>
-		</h2><!-- .comments-title -->
+		</h6><!-- .comments-title -->
 
 		<?php the_comments_navigation(); ?>
 
@@ -52,7 +51,9 @@ if ( post_password_required() ) {
 			<?php
 			wp_list_comments(
 				array(
+					'avatar_size' => 60,
 					'style'      => 'ol',
+					'max_depth'  =>2,
 					'short_ping' => true,
 				)
 			);
@@ -70,8 +71,10 @@ if ( post_password_required() ) {
 		endif;
 
 	endif; // Check for have_comments().
-
-	comment_form();
 	?>
-
+	</div><!--comment-list-area -->
+	
+	<?php
+	jhon_me_comment_form();
+	?>
 </div><!-- #comments -->

@@ -8,28 +8,17 @@
  */
 
 ?>
+<div class="col-md-12 text-left">
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> data-aos="fade-up">
+	<div class="entry-header">
+		<?php the_title( sprintf( '<h4 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h4>' ); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php
-			jhon_me_posted_on();
-			jhon_me_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<?php jhon_me_post_thumbnail(); ?>
-
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-
-	<footer class="entry-footer">
-		<?php jhon_me_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+		<div class="entry-summary">
+			<?php the_excerpt(); ?>
+		</div><!-- .entry-summary -->
+		<?php
+        get_template_part('template-parts/common/post/meta');
+    ?>
+	</div><!-- .entry-header -->
 </article><!-- #post-<?php the_ID(); ?> -->
+</div>

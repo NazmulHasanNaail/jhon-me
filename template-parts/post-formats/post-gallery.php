@@ -9,7 +9,7 @@
 
 ?>
 
-<div class="blog-single-item border gallery">
+<div class="blog-single-item  gallery" data-aos="fade-up">
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <div class="blog-single-item-img">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

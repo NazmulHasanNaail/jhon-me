@@ -9,7 +9,7 @@
 
 ?>
 
-<div class="blog-single-item border video">
+<div class="blog-single-item  video" data-aos="fade-up">
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <div class="blog-single-item-img">
         <iframe width="100%" height="315" src="https://www.youtube.com/embed/l85lugud7uQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

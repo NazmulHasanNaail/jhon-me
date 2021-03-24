@@ -1,7 +1,7 @@
 <div class="blog-single-item-text px-2">
     <?php 
         if ( is_singular() ) :
-            the_title( '<h1 class="entry-title">', '</h1>' );
+            the_title( '<h3 class="entry-title">', '</h3>' );
         else :
             the_title( '<h4 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>' );
         endif;
@@ -10,6 +10,7 @@
 
     <div class="entry-content">
         <?php
+        if(is_singular()):
         the_content(
             sprintf(
                 wp_kses(
@@ -31,6 +32,9 @@
                 'after'  => '</div>',
             )
         );
+    else:
+        the_excerpt();
+    endif;
         ?>
     </div><!-- .entry-content -->
     <?php

@@ -9,45 +9,69 @@
 
 get_header();
 ?>
+<!--========BLOG-PAGE-AREA-START==========-->
+<section class="blog-page-area">
+    <div class="container">
+        <div class="row">
+            <!--========BLOG-LEFT-SIDE-AREA==========-->
+            <div class="col-lg-8">
+                <div class="blog-left-side-area">
+                    <!--------search header-------->
+					<h1 class="page-title">
+						<?php
+						/* translators: %s: search query. */
+						printf( esc_html__( 'Search Results for: %s', 'jhon-me' ), '<span>' . get_search_query() . '</span>' );
+						?>
+					</h1>
+                    <!--------blog-post-------->
+                    <div class="row">
+                        <?php
+                        if ( have_posts() ) :
 
-	<main id="primary" class="site-main">
+                            /* Start the Loop */
+                            while ( have_posts() ) :
+                                the_post();
 
-		<?php if ( have_posts() ) : ?>
+                                /*
+                                * Include the Post-Type-specific template for the content.
+                                * If you want to override this in a child theme, then include a file
+                                * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+                                */
+                                get_template_part( 'template-parts/content', 'search' );
+                                ?>
+                        <?php
+                            endwhile;
+                            ?>
+                        <!--------blog-post-pagination------->
+                        <div class="col-md-12" data-aos="fade-down">
+                            <nav aria-label="Page navigation example">
+                                <?php jhon_me_pagination(); ?>
+                            </nav>
+                        </div><!---pagination-->
+                        <?php
+                        else :
 
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'jhon-me' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
+                            get_template_part( 'template-parts/content', 'none' );
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+                        endif;
+                        ?>
+                    </div>
+                    <!--------row-------->
+                </div>
+                <!--blog-left-side-area-->
+            </div>
+            <!--col-lg-8-->
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+            <?php get_sidebar(); ?>
 
-			endwhile;
+        </div>
+        <!--row-->
+    </div>
+    <!--container-->
+</section>
+<!--blog-page-area-->
 
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-
+<!------FOOTER------->
 <?php
-get_sidebar();
-get_footer();
+    get_footer();
+?>
