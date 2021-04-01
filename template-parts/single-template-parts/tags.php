@@ -1,5 +1,5 @@
 <?php
-	if ( 'post' === get_post_type() ) :
+	if ( 'post' === get_post_type() && has_tag() ) :
 ?>
 <div class="tag" data-aos="fade-up">
     <?php

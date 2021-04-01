@@ -8,6 +8,8 @@
  */
 
 get_header();
+/*----BREADCRUMB-----*/
+get_template_part( 'template-parts/breadcrumb');
 ?>
 <!--========BLOG-PAGE-AREA-START==========-->
 <section class="blog-page-area">
@@ -17,12 +19,12 @@ get_header();
             <div class="col-lg-8">
                 <div class="blog-left-side-area">
                     <!--------search header-------->
-					<h1 class="page-title">
+					<h5 class="page-title border-bottom">
 						<?php
 						/* translators: %s: search query. */
 						printf( esc_html__( 'Search Results for: %s', 'jhon-me' ), '<span>' . get_search_query() . '</span>' );
 						?>
-					</h1>
+					</h5>
                     <!--------blog-post-------->
                     <div class="row">
                         <?php

@@ -26,7 +26,7 @@ if ( post_password_required() ) {
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
-		<h6 class="comments-title">
+		<h5 class="comments-title">
 			<?php
 			$jhon_me_comment_count = get_comments_number();
 			if ( '1' === $jhon_me_comment_count ) {
@@ -43,25 +43,18 @@ if ( post_password_required() ) {
 				);
 			}
 			?>
-		</h6><!-- .comments-title -->
+		</h5><!-- .comments-title -->
 
-		<?php the_comments_navigation(); ?>
+		<?php jhon_me_comment_navigation(); ?>
 
 		<ol class="comment-list">
 			<?php
-			wp_list_comments(
-				array(
-					'avatar_size' => 60,
-					'style'      => 'ol',
-					'max_depth'  =>2,
-					'short_ping' => true,
-				)
-			);
+			jhon_me_comments_list();
 			?>
 		</ol><!-- .comment-list -->
 
 		<?php
-		the_comments_navigation();
+		jhon_me_comment_navigation();
 
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :

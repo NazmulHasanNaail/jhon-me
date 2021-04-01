@@ -12,11 +12,11 @@
  * @package Jhon.me
  */
 
-        /*-----HEADER----*/
-            get_header();
+/*-----HEADER----*/
+    get_header();
 
-        /*----BREADCRUMB-----*/
-        get_template_part( 'template-parts/breadcrumb');
+/*----BREADCRUMB-----*/
+get_template_part( 'template-parts/breadcrumb');
 ?>
 
 <!--========BLOG-PAGE-AREA-START==========-->
@@ -62,7 +62,6 @@
                         );
                         $all_post = new WP_Query( $args);
                         if ( $all_post->have_posts() ) :
-
                             /* Start the Loop */
                             while ( $all_post->have_posts() ) :
                                 $all_post->the_post();

@@ -19,22 +19,8 @@
                     <div class="section-heading">
                         <h2>contact me</h2>
                     </div>
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <input type="Name" class="form-control" id="Name" placeholder="Name">
-                            </div>
-                            <div class="form-group col-md-8">
-                                <input type="email" class="form-control" id="email" placeholder="Eamil">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="text" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                placeholder="Yuor Message"></textarea>
-                        </div>
+                    <?php echo do_shortcode('[contact-form-7 id="75" title="Contact form 1"]');?>
+                    <!-- <form>
                         <div class="form-row justify-content-between">
                             <div class="form-check pl-1 mb-3">
                                 <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -44,7 +30,7 @@
                             </div>
                             <button type="submit" class="btn m-auto m-sm-0">Send Message</button>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
                 <div class="col-lg-4 offset-lg-2">
                     <div class="contact-another-way">

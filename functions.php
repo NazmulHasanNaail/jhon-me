@@ -171,3 +171,13 @@ require get_template_directory() . '/inc/post-pagination.php';
  * comment.
  */
 require get_template_directory() . '/inc/comment.php';
+/**
+ * Tgm plugin Activation.
+ */
+require get_template_directory() . '/inc/tgm.php';
+/**
+ * Theme-Options.
+ */
+require get_template_directory() . '/lib/theme-options/codestar-framework.php';
+require get_template_directory() . '/inc/csf.php';
+

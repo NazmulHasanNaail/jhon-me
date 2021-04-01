@@ -19,8 +19,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!---------------CSS-FILES-------------->
     <?php 
- wp_head();
-?>
+    wp_head();
+    $options = get_option( 'jhon_me_options' );  
+    ?>
 
     <title>bootstrap starter pack </title>
 </head>
@@ -28,7 +29,7 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <!--===========HEADER-START===========-->
-    <header>
+    <header class="<?php if($options['jhon-me-sticky-header-switcher']){echo"sticky-on";};?>">
         <div class="container">
             <!--logo---->
             <div class="site-branding">

@@ -14,7 +14,7 @@ if ( ! function_exists( 'jhon_me_posted_on' ) ) :
 	function jhon_me_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="updated" datetime="%3$s">%4$s</time>';
+			$time_string = '<time class="updated" datetime="%1$s">%2$s</time>';
 		}
 
 		$time_string = sprintf(
@@ -24,11 +24,15 @@ if ( ! function_exists( 'jhon_me_posted_on' ) ) :
 			esc_attr( get_the_modified_date( DATE_W3C ) ),
 			esc_html( get_the_modified_date() )
 		);
+		
+		$archive_year  = get_the_time( 'Y' ); 
+		$archive_month = get_the_time( 'm' ); 
+		$archive_day   = get_the_time( 'd' );
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
 			esc_html_x( '%s', 'post date', 'jhon-me' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+			'<a href="' . esc_url( get_day_link($archive_year, $archive_month, $archive_day)) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
 		echo $posted_on; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -95,6 +99,37 @@ if ( ! function_exists( 'jhon_me_post_thumbnail' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'jhon_me_comments_list' ) ) :
+	/**
+ * custom Comment list.
+ *
+ * @link https://developer.wordpress.org/reference/functions/comment_list/
+ */
+function jhon_me_comments_list(){
+	wp_list_comments(
+		array(
+			'avatar_size' => 60,
+			'style'      => 'ol',
+			'max_depth'  =>2,
+			'short_ping' => true,
+		)
+	);
+}
+endif;
+
+if ( ! function_exists( 'jhon_me_comment_navigation' ) ) :
+		/**
+	 * custom Comment navigation.
+	 *
+	 * @link https://developer.wordpress.org/reference/functions/comment_navigation/
+	 */
+	function jhon_me_comment_navigation(){
+		the_comments_navigation(array(
+			'screen_reader_text'=>' ',
+		));
+	}
+endif;
+
 if ( ! function_exists( 'jhon_me_comment_form' ) ) :
 	/**
 	 * custom Comment form.
@@ -103,8 +138,8 @@ if ( ! function_exists( 'jhon_me_comment_form' ) ) :
 	 */
 	function jhon_me_comment_form(){
 		$comments_args = array(
-			'title_reply_before'=>'<h6 id="reply-title" class="comment-reply-title">',
-			'title_reply_after' =>'</h6>',
+			'title_reply_before'=>'<h5 id="reply-title" class="comment-reply-title">',
+			'title_reply_after' =>'</h5>',
 			// Change the title of send button 
 			'label_submit' => __( 'Submit Comment', 'textdomain' ),
 			// Change the title of the reply section

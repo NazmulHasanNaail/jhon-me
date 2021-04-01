@@ -29,10 +29,10 @@ p {
     color: #ffce71; }
 
 .btn {
-  background: #ffce71;
+  background: #e8b006;
   padding-left: 1.75rem;
   padding-right: 1.75rem;
-  color: #0e489f;
+  color: #fff;
   border-radius: 10px;
   transition: .3s; }
   .btn:hover {
@@ -95,7 +95,7 @@ h3 {
   padding: .4rem 1rem;
   border-radius: 5px;
   transition: all 0.5s ease;
-  background: #ffce71;
+  background: #e8b006;
   opacity: 0; }
   .return-to-top i {
     color: #0e489f;
@@ -105,17 +105,60 @@ h3 {
   opacity: 1;
   bottom: 0px; }
 
+  /*contact form wpcf7-acceptance*/
+ .wpcf7-acceptance  input[type="checkbox"] {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 15px;
+    width: 16px;
+    background: rgba(14, 72, 159, 0.8);
+}
+.wpcf7-acceptance input[type="checkbox"]:before {
+    content: '';
+    margin-right: 10px;
+    display:block;
+    margin-top: -2px;
+    width: 16px;
+    height: 16px;
+    background: rgba(14, 72, 159, 0.8);
+    border: 1px solid #ffce71;
+    border-radius: 2px;
+}
+.wpcf7-acceptance input[type="checkbox"]:checked:after {
+    content: '';
+    background-image: url(../img/subscribetickmark.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    position: absolute;
+    left: 0;
+    top: -6px;
+    width: 18px;
+    height: 20px;
+    transition: all .2s;
+}
+/* .wpcf7-acceptance span.wpcf7-list-item{
+   margin-left: -15px;
+} */
+.wpcf7-acceptance span.wpcf7-list-item-label{
+  color: #ffce71;
+}
+.wpcf7 .ajax-loader {
+  position: absolute ;
+  right: -30px;
+}
+
 /*=======================HEADERE=========================*/
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 20px 0;
   z-index: 999;
   transition: all 0.3s ease;
-  padding: 1rem 0; }
+  /* padding: 1rem 0; */
+ }
 
-header.sticky {
+header.sticky-on.sticky {
   background: #0e489f;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
   padding: 0.5rem  0; }
@@ -223,7 +266,7 @@ header.sticky {
     margin-bottom: 0;
   }
 /*=======================FOOTER=========================*/
-.footer .section-heading {
+.footer .footer-top .section-heading {
   background-image: url(../img/getItzTouch.png);
   padding-top: 3.5rem;
   padding-bottom: 1.5rem;
@@ -275,60 +318,7 @@ header.sticky {
   color: #ffce71; }
 
 /*==----for-check-box------==*/
-/* Base for label styling */
-[type="checkbox"]:not(:checked),
-[type="checkbox"]:checked {
-  position: absolute;
-  left: -9999px; }
 
-[type="checkbox"]:not(:checked) + label,
-[type="checkbox"]:checked + label {
-  position: relative;
-  padding-left: 1.95em;
-  cursor: pointer; }
-
-/* checkbox aspect */
-[type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 2px;
-  width: 1rem;
-  height: 1rem;
-  border: 1px solid #ffce71;
-  background: transparent; }
-
-/* checked mark aspect */
-[type="checkbox"]:not(:checked) + label:after,
-[type="checkbox"]:checked + label:after {
-  content: '';
-  background-image: url(../img/subscribetickmark.png);
-  background-repeat: no-repeat;
-  background-position: top left;
-  position: absolute;
-  top: -2px;
-  left: 0;
-  color: #ffce71;
-  transition: all .2s;
-  height: 20px;
-  width: 18px; }
-
-/* checked mark aspect changes */
-[type="checkbox"]:not(:checked) + label:after {
-  opacity: 0;
-  transform: scale(0); }
-
-[type="checkbox"]:checked + label:after {
-  opacity: 1;
-  transform: scale(1); }
-
-[type="checkbox"]:checked + label:before {
-  border: 1px solid #fff !important; }
-
-/* hover style just for information */
-label:hover:before {
-  border: 1px solid #fff !important; }
 
 /*=======================BREADCRUMB=========================*/
 .page-breadcrumb {
@@ -836,17 +826,17 @@ label:hover:before {
     .blog-page-area .blog-left-side-area h4 a {
       color: #2a3344;
       transition: all 0.2s ease-in-out; }
-    .blog-page-area .blog-left-side-area h6 {
+    .blog-page-area h5 {
       text-align: left;
       text-transform: uppercase;
       font-weight: 700;
       position: relative;
       padding-bottom: 1rem; }
-      .blog-page-area .blog-left-side-area h6::before {
+      .blog-page-area h5::before {
         content: '';
         position: absolute;
         bottom: 0;
-        background: #0e489f;
+        background: #e8b006;
         width: 50px;
         height: 4px;
         border-radius: 0 50px 0 50px; }
@@ -858,7 +848,7 @@ label:hover:before {
       padding: .3rem 1rem; }
     .blog-page-area .blog-left-side-area i {
       margin-right: .5rem;
-      color: #0e489f;
+      color: #e8b006;
       }
     .blog-page-area .blog-left-side-area .admin-and-post-date {
       padding: 1rem 0; }
@@ -869,16 +859,12 @@ label:hover:before {
         color: #0062ff;
       }
     .blog-page-area .blog-left-side-area .blog-single-item {
-      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
       transition: all 0.2s ease-in-out;
       transition: all 0.6s cubic-bezier(.25,.8,.25,1);
       box-shadow: 0 0.2rem 2.8rem rgba(36,36,36,.1);
       background-color: #fff;
       border: #f6f6f6;
-     }
-     .blog-single-big-content .blog-single-item,
-     .blog-post-details .blog-single-item{
-       margin-top: 0 !important;
      }
      .blog-single-big-content .category-icon,
      .blog-post-details .category-icon{
@@ -1059,6 +1045,14 @@ label:hover:before {
         .comment-body{
           border-bottom: 1px solid #dee2e6;
           padding: 20px 0;
+        }
+        /*comment-navigation*/
+        .comment-navigation h2{
+          display: none;
+        }
+        .comment-navigation .nav-links{
+          display: flex;
+          justify-content: space-between;
         }
         /*comment-comment-box*/
         .comment-respond {
@@ -1264,6 +1258,36 @@ label:hover:before {
             opacity: 1; }
             .widget .tagcloud a:hover {
             border: 1px solid #0e489f; }
+/*===error-404=====*/
+.error-404{
+  background: url(../img/bg1.png) no-repeat, url(../img/bg2.png) no-repeat;
+  background-size: 30%;
+  background-position: right -20px, left bottom;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.error-404 span{
+  display: block;
+}
+.error-404 .erortext-1 {
+  padding-top: 40px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.error-404 .erortext-2 {
+  font-size: 24px;
+  font-weight: 400;
+  opacity: 0.502;
+}
+.error-404 .eror_404_bg_img{
+ background-image: url(../img/404Eror.png);
+ background-size:contain;
+ background-repeat: no-repeat;
+ background-position: center center;
+ height: 200px;
+}             
 
 /*====================Reponsive==============*/
 @media (min-width: 576px) {
@@ -1347,7 +1371,12 @@ label:hover:before {
     padding-top: 3.5rem; }
   /*---blog-comment-area--*/
   .blog-page-area .blog-left-side-area .blog-comment-area .media .date {
-    font-size: 1rem; } }
+    font-size: 1rem; }
+    /*eror-404-page*/
+    .error-404 .eror_404_bg_img{
+      height: 400px;
+    } 
+  }
 
 @media (min-width: 992px) {
   h2 {

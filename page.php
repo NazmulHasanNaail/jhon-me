@@ -13,9 +13,12 @@
  */
 
 get_header();
+/*----BREADCRUMB-----*/
+get_template_part( 'template-parts/breadcrumb');
 ?>
-
-	<main id="primary" class="site-main">
+<!--Main-Section-->
+<section class="page">
+    <div class="container">
 
 		<?php
 		while ( have_posts() ) :
@@ -31,8 +34,10 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 
-	</main><!-- #main -->
+	</div><!--container-->
+</section><!--Main-Section-->
 
+<!------FOOTER------->
 <?php
-get_sidebar();
 get_footer();
+?>
