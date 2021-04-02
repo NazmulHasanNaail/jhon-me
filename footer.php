@@ -11,7 +11,7 @@
 
 ?>
 
-<footer class="footer">
+<footer class="footer" id="contact">
     <div class="footer-top">
         <div class="container">
             <div class="row">

@@ -91,6 +91,7 @@ get_template_part( 'template-parts/breadcrumb');
                             get_template_part( 'template-parts/content', 'none' );
 
                         endif;
+                        wp_reset_postdata();
                         ?>
                     </div>
                     <!--------row-------->

@@ -6,7 +6,7 @@
  *
  * @package Jhon.me
  */
-
+if(!is_front_page()):
 ?>
 <section class="page-breadcrumb" data-aos="fade-up">
     <nav aria-label="breadcrumb">
@@ -16,3 +16,4 @@
             ?>
     </nav>
 </section>
+<?php endif; ?>

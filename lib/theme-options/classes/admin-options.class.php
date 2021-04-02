@@ -23,7 +23,7 @@ if ( ! class_exists( 'CSF_Options' ) ) {
     public $args         = array(
 
       // framework title
-      'framework_title'         => 'Codestar Framework <small>by Codestar</small>',
+      'framework_title'         => 'Theme Options <small>by Jhon-me</small>',
       'framework_class'         => '',
 
       // menu settings
